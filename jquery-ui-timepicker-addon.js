@@ -38,6 +38,7 @@ function Timepicker() {
 		hourText: 'Hour',
 		minuteText: 'Minute',
 		secondText: 'Second',
+		millisecText: 'Millisecond',
 		timezoneText: 'Time Zone'
 	};
 	this._defaults = { // Global defaults for all the datetime picker instances
@@ -46,21 +47,26 @@ function Timepicker() {
 		showHour: true,
 		showMinute: true,
 		showSecond: false,
+		showMillisec: false,
 		showTimezone: false,
 		showTime: true,
 		stepHour: 0.05,
 		stepMinute: 0.05,
 		stepSecond: 0.05,
+		stepMillisec: 100,
 		hour: 0,
 		minute: 0,
 		second: 0,
+		millisecond: 0,
 		timezone: '+0000',
 		hourMin: 0,
 		minuteMin: 0,
 		secondMin: 0,
+		millisecMin: 0,
 		hourMax: 23,
 		minuteMax: 59,
 		secondMax: 59,
+		millisecMax: 999,
 		minDateTime: null,
 		maxDateTime: null,
 		hourGrid: 0,
@@ -86,7 +92,8 @@ $.extend(Timepicker.prototype, {
 	hour_slider: null,
 	minute_slider: null,
 	second_slider: null,
-	timezone_select: null,
+	millisecond_slider: null,
+	timezone_select: null,	
 	hour: 0,
 	minute: 0,
 	second: 0,
@@ -94,9 +101,11 @@ $.extend(Timepicker.prototype, {
 	hourMinOriginal: null,
 	minuteMinOriginal: null,
 	secondMinOriginal: null,
+	millisecondMinOriginal: null,
 	hourMaxOriginal: null,
 	minuteMaxOriginal: null,
 	secondMaxOriginal: null,
+	millisecondMaxOriginal: null,
 	ampm: '',
 	formattedDate: '',
 	formattedTime: '',
@@ -154,6 +163,7 @@ $.extend(Timepicker.prototype, {
 		tp_inst.hour = tp_inst._defaults.hour;
 		tp_inst.minute = tp_inst._defaults.minute;
 		tp_inst.second = tp_inst._defaults.second;
+		tp_inst.millisecond = tp_inst.defaults.millisecond;
 		tp_inst.ampm = '';
 		tp_inst.$input = $input;
 
